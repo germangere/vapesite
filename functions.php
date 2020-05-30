@@ -20,6 +20,6 @@ function nav(){
       </div>
     </div>
   </nav>
-  ?>
+  <?php
 }
 ?>

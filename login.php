@@ -13,13 +13,16 @@ $res->execute();
 if($res->rowCount()==0){
 	echo "Usuario no encontrado";
 }else{
-	while ($row=$res->fetch(PDO::FETCH_ASSOC)){
-		if(password_verify($pass, $row["pass"])){
-			if($row["admin"]==1){
+	while($row=$res->fetch(PDO::FETCH_ASSOC)){
+		if(password_verify($pass, $row["pass"])) {
+			session_start();
+			$_SESSION['usuario'] = $row;
+			if ($row["admin"]==1) {
 				echo "Bienvenido ADMIN";
 			}else{
-				echo "Bienvenido ".$row["nombre"]." ".$row["apellido"];
+				header ('location:home.php');
 			}
+			//session_destroy();
 		}else{
 			echo "Error en contaseña";
 		}

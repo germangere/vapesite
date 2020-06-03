@@ -4,22 +4,32 @@ head();
 nav();
 ?>
 <div class="container mt-4 col-lg-8">
-  <h2 class="text-center mb-4">Carga de atomizador</h2>
-  <form class="form-group" action="carga_atos.php" method="post" enctype="multipart/form-data">
-    <div class="form-group my-3">
-      <label>Nombre del atomizador:</label>
-      <input type="text" class="form-control" name="nombre">
+  <h2 class="text-center mb-4">Carga de productos</h2>
+  <form class="form-group" action="carga_productos.php" method="post" enctype="multipart/form-data">
+    <div class="row">
+      <div class="form-group my-3 col">
+        <label>Marca</label>
+        <input type="text" class="form-control" name="marca">
+      </div>
+      <div class="form-group my-3 col">
+        <label>Modelo</label>
+        <input type="text" class="form-control" name="modelo">
+      </div>
     </div>
     <div class="row">
       <div class="col">
-        <p class="mb-2">Tipo</p>
-        <select class="form-control" name="tipo">
-          <option value="RDA">RDA</option>
-          <option value="RTA">RTA</option>
-          <option value="RDTA">RDTA</option>
-          <option value="MTL">MTL</option>
-          <option value="Claromizador">Claromizador</option>
+        <p class="mb-2">Categoría</p>
+        <select class="form-control" name="categoria">
+          <option hidden></option>
+          <option value="atomizador">Atomizador</option>
+          <option value="mod">Mod</option>
+          <option value="liquido">Líquido</option>
+          <option value="accesorio">Accesorio</option>
         </select>
+      </div>
+      <div class="col">
+        <label>Tipo</label>
+        <input type="text" class="form-control" name="tipo">
       </div>
       <div class="form-group mb-3 col">
         <label>Precio</label>
@@ -43,7 +53,7 @@ nav();
         <input type="file" class="form-control-file" name="imagen">
       </div>
       <div class="text-center">
-        <input type="submit" class="btn btn-success my-3" name="cargar" value="Cargar ato">
+        <input type="submit" class="btn btn-success my-3" name="cargar" value="Cargar producto">
       </div>
   </form>
 </div>

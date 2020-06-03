@@ -4,7 +4,7 @@ include 'connection.php';
 head();
 nav();
 $link=connection::link();
-$result=$link->query('SELECT * FROM productos WHERE categoria="atomizador" ORDER BY id DESC')->fetchAll(PDO::FETCH_OBJ);
+$result=$link->query('SELECT * FROM productos WHERE categoria="mod" ORDER BY id DESC')->fetchAll(PDO::FETCH_OBJ);
 echo "<div class='container mt-4'>
         <div class='row'>";
 foreach ($result as $prod) {

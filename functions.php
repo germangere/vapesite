@@ -1,4 +1,5 @@
 <?php
+session_start();
 function head(){
   ?>
   <!DOCTYPE html>
@@ -9,6 +10,8 @@ function head(){
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <script src="https://kit.fontawesome.com/e2b02d9e00.js" crossorigin="anonymous"></script>
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="css/estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <title>VapeSite</title>
   </head>
   <body>
@@ -22,18 +25,29 @@ function nav(){
       <a href="home.php" class="navbar-brand">
         <span class="h4"><strong>Vape</strong>Site</span>
       </a>
-      <a href="#" class="ml-auto mr-4 order-md-last text-white">
-        <button type="button" class="btn btn-link btn-lg" data-toggle="modal" data-target="#login">
-          <i class="fas fa-user text-white"></i>
-        </button>
-      </a>
+        <?php
+        if (isset($_SESSION['usuario'])) {
+          echo "<p class='text-white ml-auto h6 mt-1 order-md-1'>".$_SESSION['usuario']['nombre']."</p>
+                    <a href='signout.php' class='mr-2 order-md-last'>
+                      <button type='button' class='btn btn-link btn-lg'>
+                        <i class='fas fa-sign-out-alt text-white'></i>
+                      </button>
+                    </a>";
+        }else{
+          echo "<a href='#' class='ml-auto mr-4 order-md-last'>
+                  <button type='button' class='btn btn-link btn-lg' data-toggle='modal' data-target='#login'>
+                    <i class='fas fa-user text-white'></i>
+                  </button>
+                </a>";
+        }
+        ?>
       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#menu" aria-controls="menu de navegación" aria-expanded="false" aria-label="desplegar menú de navegación">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="menu">
-        <ul class="navbar-nav ml-auto mr-auto">
-          <li class="nav-item"><a href="#" class="nav-link">Atos</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Mods</a></li>
+        <ul class="navbar-nav ml-auto mr-auto lead">
+          <li class="nav-item"><a href="atos.php" class="nav-link">Atos</a></li>
+          <li class="nav-item"><a href="mods.php" class="nav-link">Mods</a></li>
           <li class="nav-item"><a href="#" class="nav-link">Accesorios</a></li>
           <li class="nav-item"><a href="#" class="nav-link">Líquidos</a></li>
         </ul>

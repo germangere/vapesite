@@ -27,12 +27,17 @@ function nav(){
       </a>
         <?php
         if (isset($_SESSION['usuario'])) {
-          echo "<p class='text-white ml-auto h6 mt-1 order-md-1'>".$_SESSION['usuario']['nombre']."</p>
-                    <a href='signout.php' class='mr-2 order-md-last'>
-                      <button type='button' class='btn btn-link btn-lg'>
-                        <i class='fas fa-sign-out-alt text-white'></i>
-                      </button>
-                    </a>";
+          echo "<p class='text-white ml-auto mr-3 h6 mt-1 order-md-1'>" . $_SESSION['usuario']['nombre'] . "</p>
+                <a href='ver_carrito.php' class='order-md-2'>
+                  <button type='button' class='btn btn-link'>
+                    <i class='fas fa-shopping-cart text-white'></i>
+                  </button>
+                </a>
+                <a href='signout.php' class='mr-2 order-md-3'>
+                  <button type='button' class='btn btn-link btn-lg'>
+                    <i class='fas fa-sign-out-alt text-white'></i>
+                  </button>
+                </a>";
         }else{
           echo "<a href='#' class='ml-auto mr-4 order-md-last'>
                   <button type='button' class='btn btn-link btn-lg' data-toggle='modal' data-target='#login'>
@@ -48,8 +53,8 @@ function nav(){
         <ul class="navbar-nav ml-auto mr-auto lead">
           <li class="nav-item"><a href="atos.php" class="nav-link">Atos</a></li>
           <li class="nav-item"><a href="mods.php" class="nav-link">Mods</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Accesorios</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Líquidos</a></li>
+          <li class="nav-item"><a href="accesorios.php" class="nav-link">Accesorios</a></li>
+          <li class="nav-item"><a href="liquidos.php" class="nav-link">Líquidos</a></li>
         </ul>
       </div>
     </div>

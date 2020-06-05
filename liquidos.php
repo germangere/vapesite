@@ -4,7 +4,7 @@ include 'connection.php';
 head();
 nav();
 $link=connection::link();
-$result=$link->query('SELECT * FROM productos WHERE categoria="atomizador" ORDER BY id DESC')->fetchAll(PDO::FETCH_OBJ);
+$result=$link->query('SELECT * FROM productos WHERE categoria="liquido" ORDER BY id DESC')->fetchAll(PDO::FETCH_OBJ);
 echo "<div class='container mt-4'>
         <div class='row'>";
 foreach ($result as $prod) {
@@ -17,7 +17,7 @@ foreach ($result as $prod) {
         <hr>
         <p class='card-text'>$ ".$prod->precio."</p>
         <hr>
-        <a href='carrito.php?id=".$prod->id."' class='btn btn-primary'><i class='fas fa-cart-arrow-down mr-2'></i>Agregar al carrito</a>
+        <a href='#' class='btn btn-primary'>Ver producto</a>
       </div>
     </div>
   </article>";

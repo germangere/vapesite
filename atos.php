@@ -10,14 +10,14 @@ echo "<div class='container mt-4'>
 foreach ($result as $prod) {
   echo "<article class='col-6 col-md-4 col-lg-3 my-3 text-center'>
     <div class='card'>
-      <img class='card-img-top h-100' src='images/productos/".$prod->imagen."'>
+      <img class='card-img-top h-100' src='images/productos/$prod->imagen'>
       <div class='card-body'>
-        <h5 class='card-title'>".$prod->modelo."</h5>
-        <p class='card-text'>".$prod->marca."<br><small>".$prod->tipo."</small></p>
+        <h5 class='card-title'>$prod->modelo</h5>
+        <p class='card-text'>$prod->marca<br><small>$prod->tipo</small></p>
         <hr>
-        <p class='card-text'>$ ".$prod->precio."</p>
+        <p class='card-text'>$$prod->precio</p>
         <hr>
-        <a href='carrito.php?id=".$prod->id."' class='btn btn-primary'><i class='fas fa-cart-arrow-down mr-2'></i>Agregar al carrito</a>
+        <a href='carrito.php?id=$prod->id' class='btn btn-primary'><i class='fas fa-cart-arrow-down mr-2'></i>Agregar al carrito</a>
       </div>
     </div>
   </article>";

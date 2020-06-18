@@ -17,8 +17,10 @@ if($res->rowCount()==0){
 		if(password_verify($pass, $row["pass"])) {
 			session_start();
 			$_SESSION['usuario'] = $row;
-			if ($row["admin"]==1) {
+			if ($row["rol"]==1) {
 				echo "Bienvenido ADMIN";
+			}else if ($row["rol"]==2) {
+				echo "Bienvenido Colaborador";
 			}else{
 				header ('location:home.php');
 			}

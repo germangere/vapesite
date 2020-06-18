@@ -17,7 +17,7 @@ foreach ($result as $prod) {
         <hr>
         <p class='card-text'>$ ".$prod->precio."</p>
         <hr>
-        <a href='#' class='btn btn-primary'>Ver producto</a>
+        <a href='carrito.php?id=$prod->id' class='btn btn-primary'><i class='fas fa-cart-arrow-down mr-2'></i>Agregar al carrito</a>
       </div>
     </div>
   </article>";

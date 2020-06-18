@@ -18,6 +18,37 @@ function head(){
   <?php
 }
 
+function modal(){
+?>
+  <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-dark text-white">
+          <h4 class="modal-title">Ingresar</h4>
+          <button type="button" class="close text-white" data-dismiss="modal" aria-label="cerrar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="login.php" method="post">
+            <div class="form-group text-center">
+              <input type="text" class="form-control my-3" name="email" placeholder="E-mail">
+              <input type="password" class="form-control" name="pass" placeholder="Contraseña">
+              <input type="submit" class="btn btn-success my-3" value="Ingresar">
+            </div>
+          </form>
+          <hr>
+          <div class="text-center">
+            <h5 class="my-3">Si no estás registrado</h5>
+            <a href="registro_form.php" class="btn btn-info">Registrate acá</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <?php
+}
+
 function nav(){
   ?>
   <nav class="py-3 navbar navbar-dark bg-dark navbar-expand-md">
@@ -59,37 +90,13 @@ function nav(){
       </div>
     </div>
   </nav>
-  
-  <!-- Modal login -->
-  <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header bg-dark text-white">
-          <h4 class="modal-title" id="exampleModalLabel">Ingresar</h4>
-          <button type="button" class="close text-white" data-dismiss="modal" aria-label="cerrar">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form action="login.php" method="post">
-            <div class="form-group text-center">
-              <input type="text" class="form-control my-3" name="email" placeholder="E-mail">
-              <input type="password" class="form-control" name="pass" placeholder="Contraseña">
-              <input type="submit" class="btn btn-success my-3" value="Ingresar">
-            </div>
-          </form>
-          <hr>
-          <div class="text-center">
-            <h5 class="my-3">Si no estás registrado</h5>
-            <a href="registro_form.php" class="btn btn-info">Registrate acá</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
+  <?php 
+  modal();
+  ?>
   <?php
 }
+
 
 function foot(){
   ?>

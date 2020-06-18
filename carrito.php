@@ -3,7 +3,23 @@ include 'functions.php';
 include 'connection.php';
 
 if (!isset($_SESSION['usuario'])){
-	echo "Hágame el favor de ingresar con su nombre de usuario";
+	head();
+	nav();
+	echo "
+		<div class='jumbotron jumbotron-fluid mt-4'>
+			<div class='container text-center'>
+				<h1 class='display-4'>Ingresar</h1>
+				<p class='lead'>Ingrese con su usuario y contraseña para comprar.</p>
+				<hr class='my-4'>
+				<a href='#'>
+          <button type='button' class='btn btn-dark btn-lg' data-toggle='modal' data-target='#login'>
+            Ingresar
+          </button>
+        </a>
+			</div>
+		</div>";
+  modal();
+	foot();
 	die;
 }
 

@@ -22,34 +22,47 @@ if (isset($_SESSION['carrito'])) {
 					";
 	foreach ($carrito as $prod) {
 		echo "<tr>
-						<td class='align-middle'>" . $prod['marca'] . "</td>
-						<td class='align-middle'>" . $prod['modelo'] . "</td>
-						<td class='align-middle'><img src='images/productos/" . $prod['imagen'] . "' width='50'></td>
-						<td class='align-middle'>" . $prod['precio'] . "</td>
-						<td class='align-middle'>" . $prod['cantidad'] . "</td>
-						<td class='align-middle'>
-							<a href='restar_art.php?id=" . $or . "' class='btn btn-sm btn-info m-1'>
-							<span class='h5'><i class='fas fa-minus'></i></span>
-							</a>
-							<a href='agregar_art.php?id=" . $or . "' class='btn btn-sm btn-success m-1'>
-							<span class='h5'><i class='fas fa-plus'></i></span>
-							</a>
-							<a href='eliminar_art.php?id=" . $or . "' class='btn btn-sm btn-danger m-1'>
-							<span class='h5'><i class='fas fa-times-circle text-white'></i></span>
-							</a>
-							</td>
-					</tr>
-					";
+				<td class='align-middle'>" . $prod['marca'] . "</td>
+				<td class='align-middle'>" . $prod['modelo'] . "</td>
+				<td class='align-middle'><img src='images/productos/" . $prod['imagen'] . "' width='50'></td>
+				<td class='align-middle'>" . $prod['precio'] . "</td>
+				<td class='align-middle'>" . $prod['cantidad'] . "</td>
+				<td class='align-middle'>
+					<a href='restar_art.php?id=" . $or . "' class='btn btn-sm btn-info m-1'>
+						<span class='h5'><i class='fas fa-minus'></i></span>
+					</a>
+					<a href='agregar_art.php?id=" . $or . "' class='btn btn-sm btn-success m-1'>
+						<span class='h5'><i class='fas fa-plus'></i></span>
+					</a>
+					<a href='eliminar_art.php?id=" . $or . "' class='btn btn-sm btn-danger m-1'>
+						<span class='h5'><i class='fas fa-times-circle text-white'></i></span>
+					</a>
+				</td>
+			</tr>
+			";
 		$or++;
 	}
 	echo "</tbody>
 				</table>
 				</div>
-				</div>
 				";
-	echo "<a href='home.php' class='d-block text-center'>Volver inicio</a><br>";
+	echo "<div class='row justify-content-center mb-3'>
+          <a href='home.php' class='btn btn-dark text-white text-center'>Volver a inicio</a><br>
+				</div>
+        </div>";
 } else {
-	echo "El carrito está vacío";
+	echo "
+		<div class='jumbotron jumbotron-fluid mt-4'>
+			<div class='container text-center'>
+				<h1 class='display-4'>El carrito está vacío</h1>
+				<hr class='my-4'>
+				<a href='home.php'>
+          <button type='button' class='btn btn-dark btn-lg'>
+            Volver a inicio
+          </button>
+        </a>
+			</div>
+		</div>";
 }
 foot();
  ?>

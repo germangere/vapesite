@@ -42,7 +42,7 @@ nav();
       </div>
     </div>
     <div class="form-group text-center my-3">
-      <input type="submit" class="btn btn-success" value="Registrarme">
+      <input type="submit" class="btn btn-info" value="Registrarme">
     </div>
   </form>
 </div>

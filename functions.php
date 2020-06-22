@@ -12,9 +12,28 @@ function head(){
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="css/estilos.css">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      html{
+        background-color: #343a40;
+      }
+    </style>
     <title>VapeSite</title>
   </head>
   <body>
+  <?php
+}
+
+function admin(){
+  ?>
+  <div class="container-fluid bg-info py-2">
+    <div class="flex-row d-md-flex justify-content-around align-items-center">
+      <p class="align-middle text-white mx-1 my-0">Menú administrador</p>
+      <a class="text-white btn btn-sm btn-dark m-1" href="carga_form.php">Cargar producto</a>
+      <a class="text-white btn btn-sm btn-dark m-1" href="admin_usuarios.php">Administrar usuarios</a>
+      <a class="text-white btn btn-sm btn-dark m-1" href="">Otra opción</a>
+      <a class="text-white btn btn-sm btn-dark m-1" href="">Otra opción más</a>
+    </div>
+  </div>
   <?php
 }
 
@@ -92,21 +111,26 @@ function nav(){
   </nav>
 
   <?php 
+  if (isset($_SESSION["rol"])){
+    if ($_SESSION["rol"]==1){
+    admin();
+    }
+  }
+
   modal();
   ?>
   <?php
 }
 
-
 function foot(){
   ?>
   <footer class="py-5 bg-dark text-right">
     <div class="mr-4">
-      <a href="" class=" text-white m-2"><i class="fab fa-twitter"></i></a>
-      <a href="" class=" text-white m-2"><i class="fab fa-facebook"></i></a>
-      <a href="" class=" text-white m-2"><i class="fab fa-instagram"></i></a>
-      <a href="" class=" text-white m-2"><i class="fab fa-whatsapp"></i></a>
-      <a href="" class=" text-white m-2"><i class="far fa-envelope"></i></a>
+      <a href="http://www.twitter.com" class="text-white m-2" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="http://www.facebook.com" class="text-white m-2" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="http://www.instagram.com" class="text-white m-2" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/5492615793559" class="text-white m-2" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="mailto:germangere@gmail.com" class="text-white m-2"><i class="far fa-envelope"></i></a>
     </div>
   </footer>
 

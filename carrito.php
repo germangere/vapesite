@@ -18,7 +18,7 @@ if (!isset($_SESSION['usuario'])){
         </a>
 			</div>
 		</div>";
-  modal();
+   modal();
 	foot();
 	die;
 }
@@ -33,7 +33,24 @@ if (isset($_SESSION['carrito'])) {
 	$c = array_column($carrito, 'id');
 	
 	if(in_array($id, $c)) {
-		echo "Este elemento ya fue añadido al carrito";
+		  head();
+    nav();
+    echo "
+      <div class='jumbotron jumbotron-fluid mt-4'>
+        <div class='container text-center'>
+          <h1 class='display-4'>Producto agregado</h1>
+          <p class='lead'>El producto ya fue agregado al carrito anteriormente</p>
+          <hr class='my-4'>
+          <a href='ver_carrito.php'>
+            <button type='button' class='btn btn-dark btn-lg'>
+              Ir al carrito
+            </button>
+          </a>
+        </div>
+      </div>";
+     modal();
+    foot();
+    die;
 	} else {
 		$or = count($carrito);
 		foreach ($result as $prod){

@@ -24,10 +24,17 @@ foreach ($result as $prod) {
                 <hr>
                 <p class='card-text'>$$prod->precio</p></a>
                 <hr>
-                <a href='carrito.php?id=$prod->id' class='btn btn-info'><i class='fas fa-cart-arrow-down mr-2'></i>Agregar al carrito</a>
-              </div>
-            </div>
-          </article>";
+                <a href='carrito.php?id=$prod->id&st=$prod->stock' class='btn btn-info";
+                if ($prod->stock == '0') { print " disabled"; };
+        echo "'><i class='fas fa-cart-arrow-down mr-2'></i>Agregar al carrito</a>";
+  if ($prod->stock == '0') {
+    echo "<br><small class='text-danger'>Sin stock</small>";
+  } else {
+    echo "<br><small class='text-black-50'>Disponibles: $prod->stock</small>";
+  }
+  echo "</div>
+        </div>
+        </article>";
 }
 echo "</div></div>";
 foot();

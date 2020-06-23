@@ -18,12 +18,13 @@ if (!isset($_SESSION['usuario'])){
         </a>
 			</div>
 		</div>";
-   modal();
+	modal();
 	foot();
 	die;
 }
 
 $id = $_GET['id'];
+$stock = $_GET['st'];
 $link = connection::link();
 $sql = 'SELECT * FROM productos WHERE id='.$id;
 $result = $link->query($sql)->fetchAll(PDO::FETCH_OBJ);
@@ -33,24 +34,24 @@ if (isset($_SESSION['carrito'])) {
 	$c = array_column($carrito, 'id');
 	
 	if(in_array($id, $c)) {
-		  head();
-    nav();
-    echo "
-      <div class='jumbotron jumbotron-fluid mt-4'>
-        <div class='container text-center'>
-          <h1 class='display-4'>Producto agregado</h1>
-          <p class='lead'>El producto ya fue agregado al carrito anteriormente</p>
-          <hr class='my-4'>
-          <a href='ver_carrito.php'>
-            <button type='button' class='btn btn-dark btn-lg'>
-              Ir al carrito
-            </button>
-          </a>
-        </div>
-      </div>";
-     modal();
-    foot();
-    die;
+		head();
+	    nav();
+	    echo "
+	      <div class='jumbotron jumbotron-fluid mt-4'>
+	        <div class='container text-center'>
+	          <h1 class='display-4'>Producto agregado</h1>
+	          <p class='lead'>El producto ya fue agregado al carrito anteriormente</p>
+	          <hr class='my-4'>
+	          <a href='ver_carrito.php'>
+	            <button type='button' class='btn btn-dark btn-lg'>
+	              Ir al carrito
+	            </button>
+	          </a>
+	        </div>
+	      </div>";
+	     modal();
+	    foot();
+    	die;
 	} else {
 		$or = count($carrito);
 		foreach ($result as $prod){
@@ -60,6 +61,7 @@ if (isset($_SESSION['carrito'])) {
 			$carrito[$or + 1]['tipo'] = $prod->tipo;
 			$carrito[$or + 1]['precio'] = $prod->precio;
 			$carrito[$or + 1]['imagen'] = $prod->imagen;
+			$carrito[$or + 1]['stock'] = $stock;
 			$carrito[$or + 1]['cantidad'] = 1;
 			$_SESSION['carrito'] = $carrito;
 			header ('location: ver_carrito.php');
@@ -74,6 +76,7 @@ if (isset($_SESSION['carrito'])) {
 		$carrito[0]['tipo'] = $prod->tipo;
 		$carrito[0]['precio'] = $prod->precio;
 		$carrito[0]['imagen'] = $prod->imagen;
+		$carrito[0]['stock'] = $stock;
 		$carrito[0]['cantidad'] = 1;
 		$_SESSION['carrito'] = $carrito;
 		header ('location: ver_carrito.php');

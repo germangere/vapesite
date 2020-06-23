@@ -3,6 +3,7 @@ include 'functions.php';
 include 'connection.php';
 $marca=$_POST['marca'];
 $modelo=$_POST['modelo'];
+$stock=$_POST['stock'];
 $categoria=$_POST['categoria'];
 $tipo=$_POST['tipo'];
 $precio=$_POST['precio'];
@@ -93,7 +94,7 @@ if($nombre_imagen!=""){
 }
 
 $link=connection::link();
-$sql='INSERT INTO productos (categoria, marca, modelo, tipo, precio, descripcion, sitio, sitio2, imagen) VALUES (?,?,?,?,?,?,?,?,?)';
+$sql='INSERT INTO productos (categoria, marca, modelo, stock, tipo, precio, descripcion, sitio, sitio2, imagen) VALUES (?,?,?,?,?,?,?,?,?,?)';
 $result=$link->prepare($sql);
-$result->execute(array($categoria, $marca, $modelo, $tipo, $precio, $descripcion, $sitio, $sitio2, $nombre_imagen));
+$result->execute(array($categoria, $marca, $modelo, $stock, $tipo, $precio, $descripcion, $sitio, $sitio2, $nombre_imagen));
 ?>

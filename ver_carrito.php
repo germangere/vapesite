@@ -31,7 +31,7 @@ if (isset($_SESSION['carrito'])) {
 					<a href='restar_art.php?id=" . $or . "' class='btn btn-sm btn-info m-1'>
 						<span class='h5'><i class='fas fa-minus'></i></span>
 					</a>
-					<a href='agregar_art.php?id=" . $or . "' class='btn btn-sm btn-success m-1'>
+					<a href='agregar_art.php?id=" . $or . "&st=" . $prod['stock'] . "' class='btn btn-sm btn-success m-1'>
 						<span class='h5'><i class='fas fa-plus'></i></span>
 					</a>
 					<a href='eliminar_art.php?id=" . $or . "' class='btn btn-sm btn-danger m-1'>
@@ -46,9 +46,12 @@ if (isset($_SESSION['carrito'])) {
 				</table>
 				</div>
 				";
-	echo "<div class='row justify-content-center mb-3'>
-          <a href='home.php' class='btn btn-dark text-white text-center'>Volver a inicio</a><br>
-				</div>
+	echo "
+        <div class='row justify-content-center mb-3'>
+            <a href='home.php' class='btn btn-dark text-white text-center m-1'>Volver a inicio</a>
+            <a href='compra.php' class='btn btn-success text-white text-center m-1'>Finalizar compra</a>
+            <br>
+        </div>
         </div>";
 } else {
 	echo "

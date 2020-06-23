@@ -1,5 +1,9 @@
 $texto:#484848;
 
+html{
+	font-size:13px;
+}
+
 body{
   color:$texto;
   font-family: 'Ubuntu', sans-serif;
@@ -7,4 +11,10 @@ body{
 
 .card:hover{
   box-shadow: 0 0 10px #0c0c0c3b;
+}
+
+@media (min-width: 768px){
+	html{
+		font-size: 16px;	
+	}
 }

@@ -1,4 +1,5 @@
 <?php
+include 'functions.php';
 include 'connection.php';
 $marca=$_POST['marca'];
 $modelo=$_POST['modelo'];
@@ -17,17 +18,77 @@ if($nombre_imagen!=""){
 		if($tipo_imagen=="image/jpg" || $tipo_imagen=="image/jpeg" || $tipo_imagen=="image/png" || $tipo_imagen=="image/gif" || $tipo_imagen=="image/bmp"){
 			$carpeta_destino=$_SERVER['DOCUMENT_ROOT'] . '/newvape/images/productos/';
 			move_uploaded_file($_FILES['imagen']['tmp_name'] , $carpeta_destino.$nombre_imagen);
-			echo "Imagen subida satisfactoriamente";
+			head();
+			nav();
+		    echo "
+		      <div class='jumbotron jumbotron-fluid mt-4 mb-3'>
+		        <div class='container text-center'>
+		          <h1 class='display-4'>Carga exitosa</h1>
+		          <p class='lead'>El producto se añadió correctamente</p>
+		          <hr class='my-4'>
+		          <a href='home.php'>
+		            <button type='button' class='btn btn-dark btn-lg'>
+		              Ir a inicio
+		            </button>
+		          </a>
+		        </div>
+		      </div>";
+		    foot();
 		}else{
-			echo "Sólo imágenes aceptadas (jpg, jpeg, png, bmp, gif)";
+			head();
+			nav();
+		    echo "
+		      <div class='jumbotron jumbotron-fluid mt-4 mb-3'>
+		        <div class='container text-center'>
+		          <h1 class='display-4'>Error</h1>
+		          <p class='lead'>Sólo imágenes permitidas</p>
+		          <hr class='my-4'>
+		          <a href='home.php'>
+		            <button type='button' class='btn btn-dark btn-lg'>
+		              Ir a inicio
+		            </button>
+		          </a>
+		        </div>
+		      </div>";
+		    foot();
 			die;
 		}
 	}else{
-		echo "Tamaño de imagen no aceptado";
+		head();
+		nav();
+	    echo "
+	      <div class='jumbotron jumbotron-fluid mt-4'>
+	        <div class='container text-center'>
+	          <h1 class='display-4'>Error</h1>
+	          <p class='lead'>Tamaño de imagen no permitido</p>
+	          <hr class='my-4'>
+	          <a href='home.php'>
+	            <button type='button' class='btn btn-dark btn-lg'>
+	              Ir a inicio
+	            </button>
+	          </a>
+	        </div>
+	      </div>";
+      	foot();
 		die;
 	}
 }else{
-	echo "error al subir la imagen";
+	head();
+	nav();
+    echo "
+      <div class='jumbotron jumbotron-fluid mt-4'>
+        <div class='container text-center'>
+          <h1 class='display-4'>Error</h1>
+          <p class='lead'>Fallo al cargar la imagen</p>
+          <hr class='my-4'>
+          <a href='home.php'>
+            <button type='button' class='btn btn-dark btn-lg'>
+              Ir a inicio
+            </button>
+          </a>
+        </div>
+      </div>";
+    foot();
 	die;
 }
 

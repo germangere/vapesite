@@ -7,7 +7,7 @@ if (isset($_SESSION['carrito'])) {
 	$or = 0;
 	echo "<div class='container mt-5'>
 					<div class='table-responsive'>
-						<table class='table'>
+						<table class='table text-center'>
 							<thead>
 								<tr>
 									<th scope='col'>Marca</th>
@@ -27,7 +27,7 @@ if (isset($_SESSION['carrito'])) {
 				<td class='align-middle'><img src='images/productos/" . $prod['imagen'] . "' width='50'></td>
 				<td class='align-middle'>" . $prod['precio'] . "</td>
 				<td class='align-middle'>" . $prod['cantidad'] . "</td>
-				<td class='align-middle'>
+				<td class='align-middle p-0'>
 					<a href='restar_art.php?id=" . $or . "' class='btn btn-sm btn-info m-1'>
 						<span class='h5'><i class='fas fa-minus'></i></span>
 					</a>

@@ -44,11 +44,12 @@ if (!isset($_SESSION['rol'])){
                  echo "Colab";
                  break;
              }
-             echo "</td>
-            <td><a href='ver_usuario.php?id=$user->id' class='btn btn-sm btn-info'>config</a></td>
-          </tr>
-          
-    ";
+             echo "</td><td>";
+             if ($_SESSION['usuario']['id']!=$user->id){
+              echo "<a href='ver_usuario.php?id=$user->id' class='btn btn-sm btn-info'><i class='fas fa-cog'></i></a></td></tr>";
+             }else{
+              echo "</td></tr>";
+             }
   }
   echo "</tbody></table></div>";
 }else{

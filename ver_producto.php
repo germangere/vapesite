@@ -17,18 +17,21 @@ foreach ($res as $prod) {
 							<h5>$prod->marca</h5>
 							<p>$prod->categoria $prod->tipo</p>
 							<p class='font-weight-bold'>$$prod->precio</p>
-							<a href='carrito.php?id=$prod->id' class='btn btn-info'><i class='fas fa-cart-arrow-down mr-2'></i>Agregar al carrito</a>
-						</div>
-					</div>
-						<hr>
-					<div class='row mt-4 mb-5'>
-						<div class='col-12 text-center'>
-							<p>$prod->descripcion</p>
-							<a href='$prod->sitio' target='_blank'>$prod->sitio</a>
-							<a href='$prod->sitio2' target='_blank'>$prod->sitio2</a>
-						</div>
-					</div>
-				</div>";
+							<a href='carrito.php?id=$prod->id' class='btn btn-info'><i class='fas fa-cart-arrow-down mr-2'></i>Agregar al carrito</a>";
+	if (isset($_SESSION['rol']) and $_SESSION['rol'] > 0){
+		echo "<a href='editar_producto.php?id=$prod->id' class='btn btn-info text-white m-2'><i class='fas fa-cog'></i></a>";
+	}
+	echo "</div>
+		</div>
+			<hr>
+		<div class='row mt-4 mb-5'>
+			<div class='col-12 text-center'>
+				<p>".nl2br($prod->descripcion)."</p>
+				<a href='$prod->sitio' target='_blank'>$prod->sitio</a><br>
+				<a href='$prod->sitio2' target='_blank'>$prod->sitio2</a>
+			</div>
+		</div>
+	</div>";
 }
 
 

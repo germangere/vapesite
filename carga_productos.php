@@ -21,74 +21,42 @@ if($nombre_imagen!=""){
 			move_uploaded_file($_FILES['imagen']['tmp_name'] , $carpeta_destino.$nombre_imagen);
 			head();
 			nav();
-		    echo "
-		      <div class='jumbotron jumbotron-fluid mt-4 mb-3'>
-		        <div class='container text-center'>
-		          <h1 class='display-4'>Carga exitosa</h1>
-		          <p class='lead'>El producto se añadió correctamente</p>
-		          <hr class='my-4'>
-		          <a href='home.php'>
-		            <button type='button' class='btn btn-dark btn-lg'>
-		              Ir a inicio
-		            </button>
-		          </a>
-		        </div>
-		      </div>";
+		    $tit = "Carga exitosa";
+		    $msj = "El producto se añadió correctamente";
+		    $des = "home.php";
+		    $btn = "Ir a inicio";
+		    jumbo($tit, $msj, $des, $btn);
 		    foot();
 		}else{
 			head();
 			nav();
-		    echo "
-		      <div class='jumbotron jumbotron-fluid mt-4 mb-3'>
-		        <div class='container text-center'>
-		          <h1 class='display-4'>Error</h1>
-		          <p class='lead'>Sólo imágenes permitidas</p>
-		          <hr class='my-4'>
-		          <a href='home.php'>
-		            <button type='button' class='btn btn-dark btn-lg'>
-		              Ir a inicio
-		            </button>
-		          </a>
-		        </div>
-		      </div>";
+			$tit = "Error";
+		    $msj = "Sólo imágenes permitidas";
+		    $des = "home.php";
+		    $btn = "Ir a inicio";
+		    jumbo($tit, $msj, $des, $btn);
 		    foot();
 			die;
 		}
 	}else{
 		head();
 		nav();
-	    echo "
-	      <div class='jumbotron jumbotron-fluid mt-4'>
-	        <div class='container text-center'>
-	          <h1 class='display-4'>Error</h1>
-	          <p class='lead'>Tamaño de imagen no permitido</p>
-	          <hr class='my-4'>
-	          <a href='home.php'>
-	            <button type='button' class='btn btn-dark btn-lg'>
-	              Ir a inicio
-	            </button>
-	          </a>
-	        </div>
-	      </div>";
+		$tit = "Error";
+	    $msj = "Tamaño de imagen no permitido";
+	    $des = "home.php";
+	    $btn = "Ir a inicio";
+	    jumbo($tit, $msj, $des, $btn);		
       	foot();
 		die;
 	}
 }else{
 	head();
 	nav();
-    echo "
-      <div class='jumbotron jumbotron-fluid mt-4'>
-        <div class='container text-center'>
-          <h1 class='display-4'>Error</h1>
-          <p class='lead'>Fallo al cargar la imagen</p>
-          <hr class='my-4'>
-          <a href='home.php'>
-            <button type='button' class='btn btn-dark btn-lg'>
-              Ir a inicio
-            </button>
-          </a>
-        </div>
-      </div>";
+	$tit = "Error";
+    $msj = "Fallo al cargar la imagen";
+    $des = "home.php";
+    $btn = "Ir a inicio";
+    jumbo($tit, $msj, $des, $btn);
     foot();
 	die;
 }

@@ -6,7 +6,7 @@ echo "
 <div class='jumbotron jumbotron-fluid mt-4'>
 	<div class='container text-center'>
 		<h1 class='display-4'>Error en contraseña</h1>
-		<p class='lead'>Por favor reintente ingresar con los datos adecuados</p>
+		<p class='lead'>Reintentá ingresar con los datos adecuados</p>
 		<hr class='my-4'>
 		<a href='#'>
 			<button type='button' class='btn btn-dark btn-lg' data-toggle='modal' data-target='#login'>

@@ -77,7 +77,7 @@ function nav(){
       </a>
         <?php
         if (isset($_SESSION['usuario'])) {
-          echo "<p class='text-white ml-auto mr-3 h6 mt-1 order-md-1'>" . $_SESSION['usuario']['nombre'] . "</p>
+          echo "<a href='micuenta.php' class='text-white ml-auto mr-3 h6 mt-1 order-md-1'>" . $_SESSION['usuario']['nombre'] . "</a>
                 <a href='ver_carrito.php' class='order-md-2'>
                   <button type='button' class='btn btn-link'>
                     <i class='fas fa-shopping-cart text-white'></i>
@@ -155,6 +155,46 @@ function card($result){
           </article>";
   }
   echo "</div></div>";
+}
+
+function jumbo($tit, $msj, $des, $btn){
+  echo "
+        <div class='jumbotron jumbotron-fluid mt-4 mb-3'>
+          <div class='container text-center'>
+            <h1 class='display-4'>$tit</h1>
+            <p class='lead'>$msj</p>
+            <hr class='my-4'>
+            <a href='$des'>
+              <button type='button' class='btn btn-dark btn-lg'>$btn</button>
+            </a>
+          </div>
+        </div>";
+}
+
+function paginationFoot($pag, $total_pag){
+  $ant = $pag-1;
+  $pos = $pag+1;  
+  
+  echo "
+        <nav>
+          <ul class='pagination pagination-sm justify-content-center'>
+            <li class='page-item";
+  if ($pag == 1){
+    echo " disabled";
+  }
+  echo "'><a class='page-link' href='?pag=$ant'><i class='fas fa-chevron-left'></i></a></li>";
+  for ($i=1; $i <= $total_pag ; $i++) { 
+    echo "<li class='page-item";
+    $pag == $i ? print " active" : "";
+    echo "'><a class='page-link' href='?pag=$i'>$i</a></li>";
+  }
+  echo "<li class='page-item";
+  if ($pag == $total_pag){
+    echo " disabled";
+  }
+  echo "'><a class='page-link' href='?pag=$pos'><i class='fas fa-chevron-right'></i></a></li>
+        </ul>
+        </nav>";
 }
 
 function foot(){

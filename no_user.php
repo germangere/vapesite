@@ -8,9 +8,9 @@ echo "
 		<h1 class='display-4'>Usuario no encontrado</h1>
 		<hr class='my-4'>
 		<a href='#'>
-  		<button type='button' class='btn btn-dark btn-lg' data-toggle='modal' data-target='#login'>
-   		 Ingresar
-  		</button>
+	  		<button type='button' class='btn btn-dark btn-lg' data-toggle='modal' data-target='#login'>
+	   			Ingresar
+	  		</button>
 		</a>
 	</div>
 </div>";

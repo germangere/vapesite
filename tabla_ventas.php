@@ -7,15 +7,39 @@ if (!isset($_SESSION['rol'])){
 }else if ($_SESSION['rol']==1){
   head();
   nav();
+
+  if (isset($_GET["pag"])){
+    $pag = (int) $_GET["pag"];
+  }else{
+    $pag = 1;
+  }
+
   echo "<h2 class='my-4 text-center'>Ventas</h2>";
   $link = connection::link();
-  $sql="SELECT usuarios.nombre, usuarios.apellido, productos.marca, productos.modelo, ventas.cantidad, ventas.estado, ventas.id
+  $sql = "SELECT usuarios.nombre, usuarios.apellido, productos.marca, productos.modelo, ventas.cantidad, ventas.estado, ventas.id
   		FROM usuarios
   		JOIN ventas ON ventas.usuario = usuarios.id
   		JOIN productos ON productos.id = ventas.producto
   		WHERE ventas.estado = 0
       ORDER BY ventas.fecha DESC";
-  $res = $link->query($sql)->fetchAll(PDO::FETCH_OBJ);
+  $tot = $link->prepare($sql);
+  $tot->execute();
+  $cant_reg = $tot->rowCount();
+  $reg_pp = 10;
+  $total_pag = ceil($cant_reg/$reg_pp);
+  $tot->closeCursor();
+
+  $desde = ($pag - 1) * $reg_pp;
+
+  $sqllimit = "SELECT usuarios.nombre, usuarios.apellido, productos.marca, productos.modelo, ventas.cantidad, ventas.estado, ventas.id
+      FROM usuarios
+      JOIN ventas ON ventas.usuario = usuarios.id
+      JOIN productos ON productos.id = ventas.producto
+      WHERE ventas.estado = 0
+      ORDER BY ventas.fecha DESC
+      LIMIT $desde, $reg_pp";
+  $limit = $link->query($sqllimit)->fetchAll(PDO::FETCH_OBJ);
+
   echo "
         <div class='container my-5'>
           <table class='table table-hover table-sm text-center'>
@@ -28,7 +52,7 @@ if (!isset($_SESSION['rol'])){
               </tr>
             </thead>
             <tbody>";
-  foreach ($res as $venta){
+  foreach ($limit as $venta){
   	echo "
           <tr>
             <td class='align-middle'>$venta->nombre $venta->apellido</td>
@@ -41,7 +65,12 @@ if (!isset($_SESSION['rol'])){
             </td>
           </tr>";
   }
-  echo "</tbody></table></div>";
+  echo "</tbody></table><br>";
+  paginationFoot($pag, $total_pag);
+  echo "</div>";
+
+
+
 }else{
   header('location:home.php');
 }

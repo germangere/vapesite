@@ -50,72 +50,41 @@ if($nombre_imagen!=""){
 			if ($res->rowCount() != 0){
 				head();
 				nav();
-			    echo "
-			      <div class='jumbotron jumbotron-fluid mt-4'>
-			        <div class='container text-center'>
-			          <h1 class='display-4'>Edición exitosa</h1>
-			          <p class='lead'>El producto se actualizó correctamente</p>
-			          <hr class='my-4'>
-			          <a href='home.php'>
-			            <button type='button' class='btn btn-dark btn-lg'>
-			              Ir a inicio
-			            </button>
-			          </a>
-			        </div>
-			      </div>";
+				$tit = "Edición exitosa";
+			    $msj = "El producto se actualizó correctamente";
+			    $des = "home.php";
+			    $btn = "Ir a inicio";
+			    jumbo($tit, $msj, $des, $btn);
 			}else{
 				head();
 				nav();
-			    echo "
-			      <div class='jumbotron jumbotron-fluid mt-4'>
-			        <div class='container text-center'>
-			          <h1 class='display-4'>Error</h1>
-			          <p class='lead'>Fallo al actualizar el producto</p>
-			          <hr class='my-4'>
-			          <a href='home.php'>
-			            <button type='button' class='btn btn-dark btn-lg'>
-			              Ir a inicio
-			            </button>
-			          </a>
-			        </div>
-			      </div>";
+				$tit = "Error";
+			    $msj = "Fallo al actualizar el producto";
+			    $des = "editar_producto.php";
+			    $btn = "Reintentar";
+			    jumbo($tit, $msj, $des, $btn);
 			    foot();
+			    die;
 			}
 		}else{
 			head();
 			nav();
-		    echo "
-		      <div class='jumbotron jumbotron-fluid mt-4'>
-		        <div class='container text-center'>
-		          <h1 class='display-4'>Error</h1>
-		          <p class='lead'>Sólo imágenes permitidas</p>
-		          <hr class='my-4'>
-		          <a href='home.php'>
-		            <button type='button' class='btn btn-dark btn-lg'>
-		              Ir a inicio
-		            </button>
-		          </a>
-		        </div>
-		      </div>";
+			$tit = "Error";
+		    $msj = "Sólo imágenes permitidas";
+		    $des = "editar_producto.php";
+		    $btn = "Reintentar";
+		    jumbo($tit, $msj, $des, $btn);
 		    foot();
 			die;
 		}
 	}else{
 		head();
 		nav();
-	    echo "
-	      <div class='jumbotron jumbotron-fluid mt-4'>
-	        <div class='container text-center'>
-	          <h1 class='display-4'>Error</h1>
-	          <p class='lead'>Tamaño de imagen no permitido</p>
-	          <hr class='my-4'>
-	          <a href='home.php'>
-	            <button type='button' class='btn btn-dark btn-lg'>
-	              Ir a inicio
-	            </button>
-	          </a>
-	        </div>
-	      </div>";
+		$tit = "Error";
+	    $msj = "Tamaño de imagen no permitido";
+	    $des = "editar_producto.php";
+	    $btn = "Reintentar";
+	    jumbo($tit, $msj, $des, $btn);
 	    foot();
 		die;
 	}
@@ -148,35 +117,19 @@ if($nombre_imagen!=""){
 	if ($res->rowCount() != 0){
 		head();
 		nav();
-	    echo "
-	      <div class='jumbotron jumbotron-fluid mt-4'>
-	        <div class='container text-center'>
-	          <h1 class='display-4'>Edición exitosa</h1>
-	          <p class='lead'>El producto se actualizó correctamente</p>
-	          <hr class='my-4'>
-	          <a href='home.php'>
-	            <button type='button' class='btn btn-dark btn-lg'>
-	              Ir a inicio
-	            </button>
-	          </a>
-	        </div>
-	      </div>";
+	    $tit = "Edición exitosa";
+	    $msj = "El producto se actualizó correctamente";
+	    $des = "home.php";
+	    $btn = "Ir a inicio";
+	    jumbo($tit, $msj, $des, $btn);
 	}else{
 		head();
 		nav();
-	    echo "
-	      <div class='jumbotron jumbotron-fluid mt-4'>
-	        <div class='container text-center'>
-	          <h1 class='display-4'>Error</h1>
-	          <p class='lead'>Fallo al actualizar el producto</p>
-	          <hr class='my-4'>
-	          <a href='home.php'>
-	            <button type='button' class='btn btn-dark btn-lg'>
-	              Ir a inicio
-	            </button>
-	          </a>
-	        </div>
-	      </div>";
+	    $tit = "Error";
+	    $msj = "Fallo al actualizar el producto";
+	    $des = "editar_producto.php";
+	    $btn = "Reintentar";
+	    jumbo($tit, $msj, $des, $btn);
 	}
 }
 foot();

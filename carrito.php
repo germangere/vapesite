@@ -9,13 +9,13 @@ if (!isset($_SESSION['usuario'])){
 		<div class='jumbotron jumbotron-fluid mt-4'>
 			<div class='container text-center'>
 				<h1 class='display-4'>Ingresar</h1>
-				<p class='lead'>Ingrese con su usuario y contraseña para comprar.</p>
+				<p class='lead'>Ingresá con tu usuario y contraseña para comprar</p>
 				<hr class='my-4'>
 				<a href='#'>
-          <button type='button' class='btn btn-dark btn-lg' data-toggle='modal' data-target='#login'>
-            Ingresar
-          </button>
-        </a>
+		          <button type='button' class='btn btn-dark btn-lg' data-toggle='modal' data-target='#login'>
+		            Ingresar
+		          </button>
+		        </a>
 			</div>
 		</div>";
 	modal();
@@ -36,20 +36,11 @@ if (isset($_SESSION['carrito'])) {
 	if(in_array($id, $c)) {
 		head();
 	    nav();
-	    echo "
-	      <div class='jumbotron jumbotron-fluid mt-4'>
-	        <div class='container text-center'>
-	          <h1 class='display-4'>Producto agregado</h1>
-	          <p class='lead'>El producto ya fue agregado al carrito anteriormente</p>
-	          <hr class='my-4'>
-	          <a href='ver_carrito.php'>
-	            <button type='button' class='btn btn-dark btn-lg'>
-	              Ir al carrito
-	            </button>
-	          </a>
-	        </div>
-	      </div>";
-	     modal();
+	    $tit = "Producto agregado";
+	    $msj = "El producto fue agregado al carrito anteriormente";
+	    $des = "ver_carrito.php";
+	    $btn = "Ir al carrito";
+	    jumbo($tit, $msj, $des, $btn);		
 	    foot();
     	die;
 	} else {

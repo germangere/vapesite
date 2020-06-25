@@ -21,7 +21,7 @@ if (isset($_SESSION['carrito'])) {
 					";
 	foreach ($carrito as $prod) {
 		echo "<tr>
-				<td class='align-middle'>" . $prod['marca'] . " " . $prod['modelo'] . "</td>
+				<td class='align-middle'>" . $prod['marca'] . " - " . $prod['modelo'] . "</td>
 				<td class='align-middle'><img src='images/productos/" . $prod['imagen'] . "' width='50'></td>
 				<td class='align-middle'>$ " . $prod['precio'] . "</td>
 				<td class='align-middle'>" . $prod['cantidad'] . "</td>

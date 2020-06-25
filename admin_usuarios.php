@@ -1,14 +1,32 @@
 <?php
 include 'functions.php';
 include 'connection.php';
-if (!isset($_SESSION['rol'])){
-  header('location:home.php');
-}else if ($_SESSION['rol']==1){
+if (!isset($_SESSION['rol'])) {
+  header('location: home.php');
+} else if ($_SESSION['rol']==1) {
   head();
   nav();
+
+  if (isset($_GET["pag"])) {
+    $pag = (int) $_GET["pag"];
+  } else {
+    $pag = 1;
+  }
+
   echo "<h2 class='my-4 text-center'>Administración de usuarios</h2>";
   $link = connection::link();
-  $res = $link->query('SELECT * FROM usuarios')->fetchAll(PDO::FETCH_OBJ);
+  $tot = $link->prepare('SELECT * FROM usuarios');
+  $tot->execute();
+  $cant_reg = $tot->rowCount();
+  $reg_pp = 10;
+  $total_pag = ceil($cant_reg/$reg_pp);
+  $tot->closeCursor();
+  $desde = ($pag - 1) * $reg_pp;
+
+  $sqllimit="SELECT * FROM usuarios
+            LIMIT $desde, $reg_pp";
+  $limit = $link->query($sqllimit)->fetchAll(PDO::FETCH_OBJ);
+
   echo "
         <div class='container my-5'>
           <table class='table table-hover table-sm'>
@@ -24,7 +42,7 @@ if (!isset($_SESSION['rol'])){
               </tr>
             </thead>
             <tbody>";
-  foreach ($res as $user){
+  foreach ($limit as $user){
   	echo "
           <tr>
             <th scope='row'>$user->id</th>
@@ -51,7 +69,9 @@ if (!isset($_SESSION['rol'])){
               echo "</td></tr>";
              }
   }
-  echo "</tbody></table></div>";
+  echo "</tbody></table>";
+  paginationFoot($pag, $total_pag);
+  echo "</div>";
 }else{
   header('location:home.php');
 }

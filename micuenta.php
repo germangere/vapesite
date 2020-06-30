@@ -4,9 +4,9 @@ include 'connection.php';
 head();
 nav();
 $link = connection::link();
-$sql = "SELECT v.fecha, v.cantidad, v.estado, v.importe, p.categoria, p.marca, p.modelo, p.tipo, p.imagen
+$sql = "SELECT v.*, vp.*
         FROM ventas v
-        JOIN productos p ON v.producto = p.id
+        JOIN ventas_producto vp ON vp.venta_id = v.id
         JOIN usuarios u ON v.usuario = u.id
         WHERE u.id = :id
         ORDER BY v.fecha DESC";

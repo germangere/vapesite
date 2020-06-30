@@ -16,62 +16,65 @@ if (!isset($_SESSION['rol'])){
 
   echo "<h2 class='my-4 text-center'>Ventas</h2>";
   $link = connection::link();
-  $sql = "SELECT usuarios.nombre, usuarios.apellido, productos.marca, productos.modelo, ventas.cantidad, ventas.estado, ventas.id
-  		FROM usuarios
-  		JOIN ventas ON ventas.usuario = usuarios.id
-  		JOIN productos ON productos.id = ventas.producto
-  		WHERE ventas.estado = 0
-      ORDER BY ventas.fecha DESC";
-  $tot = $link->prepare($sql);
+  $tot = $link->prepare("SELECT count(id) FROM ventas");
   $tot->execute();
-  $cant_reg = $tot->rowCount();
+  $cant_reg = $tot->fetch();
+  $cant_reg = $cant_reg[0];
   $reg_pp = 10;
   $total_pag = ceil($cant_reg/$reg_pp);
   $tot->closeCursor();
 
   $desde = ($pag - 1) * $reg_pp;
 
-  $sqllimit = "SELECT usuarios.nombre, usuarios.apellido, productos.marca, productos.modelo, ventas.cantidad, ventas.estado, ventas.id
-      FROM usuarios
-      JOIN ventas ON ventas.usuario = usuarios.id
-      JOIN productos ON productos.id = ventas.producto
-      WHERE ventas.estado = 0
-      ORDER BY ventas.fecha DESC
+  $sqllimit = "SELECT u.nombre, u.apellido, v.*
+      FROM usuarios u
+      JOIN ventas v ON v.usuario = u.id
+      WHERE v.estado = 0
+      ORDER BY v.fecha DESC
       LIMIT $desde, $reg_pp";
   $limit = $link->query($sqllimit)->fetchAll(PDO::FETCH_OBJ);
 
   echo "
         <div class='container my-5'>
-          <table class='table table-hover table-sm text-center'>
-            <thead>
-              <tr>
-                <th scope='col'>Usuario</th>
-                <th scope='col'>Producto</th>
-                <th scope='col'>Cantidad</th>
-                <th scope='col'></th>
-              </tr>
-            </thead>
-            <tbody>";
+          <div class='row'>
+            <div class='col-2 text-center'><p class='h5'>Usuario</p></div>
+            <div class='col-6 text-center'><p class='h5'>Producto</p></div>
+            <div class='col-2 text-center'><p class='h5'>Importe</p></div>
+          </div><hr>";
   foreach ($limit as $venta){
-  	echo "
-          <tr>
-            <td class='align-middle'>$venta->nombre $venta->apellido</td>
-            <td class='align-middle'>$venta->marca - $venta->modelo</td>
-            <td class='align-middle'>$venta->cantidad</td>
-            <td class='align-middle'>
-              <a href='entregado.php?id=$venta->id' class='btn btn-sm btn-success' title='Entregado'>
-                <span class='text-white h6'><i class='fas fa-check'></i></span>
-              </a>
-            </td>
-          </tr>";
+      $productos = $link->prepare("SELECT * FROM ventas_producto WHERE venta_id=$venta->id");
+      $productos->execute();
+      $productos = $productos->fetchAll(PDO::FETCH_OBJ);
+      $date = date_create($venta->fecha);
+      $date = date_format($date, 'd-m-Y');
+      echo "
+            <div class='row align-items-center'>
+              <div class='col-2 text-center'>
+                <div>$venta->nombre $venta->apellido</div>
+                <div class='small font-italic'>($date)</div>
+              </div>
+              <div class='col-6'>";
+      foreach ($productos as $item){
+        echo "<br><div>$item->marca - $item->modelo</div>
+              <div class='font-italic text-right'>$ $item->precio x $item->cantidad</div>";
+      }
+
+        echo "</div>
+              <div class='col-2 text-center font-weight-bold p-1'>$ $venta->importe</div>
+              <div class='col-2 text-center'>
+                <a href='entregado.php?id=$venta->id' class='btn btn-sm btn-success' title='Entregado'>
+                  <span class='text-white h6'><i class='fas fa-check'></i></span>
+                </a>
+              </div>
+            </div><hr>";
+
   }
-  echo "</tbody></table><br>";
   paginationFoot($pag, $total_pag);
   echo "</div>";
 
 
 
-}else{
+} else {
   header('location:home.php');
 }
 foot();

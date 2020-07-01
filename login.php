@@ -3,7 +3,7 @@ $user=htmlentities(addslashes($_POST['email']));
 $pass=htmlentities(addslashes($_POST['pass']));
 
 include 'usuario.php';
-include 'connection.php';
+include_once 'connection.php';
 
 $link=connection::link();
 $sql="SELECT * FROM usuarios WHERE email=?";

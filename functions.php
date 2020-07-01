@@ -171,6 +171,19 @@ function jumbo($tit, $msj, $des, $btn){
         </div>";
 }
 
+function jum($tit, $msj){
+  head();
+  nav();
+  echo "
+        <div class='jumbotron jumbotron-fluid mt-4 mb-3'>
+          <div class='container text-center'>
+            <h1 class='display-4'>$tit</h1>
+            <p class='lead'>$msj</p>
+          </div>
+        </div>";
+  foot();
+}
+
 function paginationFoot($pag, $total_pag){
   $ant = $pag-1;
   $pos = $pag+1;  

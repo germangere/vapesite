@@ -3,16 +3,6 @@ include 'functions.php';
 include 'connection.php';
 head();
 nav();
-$link = connection::link();
-$sql = "SELECT v.*, vp.*
-        FROM ventas v
-        JOIN ventas_producto vp ON vp.venta_id = v.id
-        JOIN usuarios u ON v.usuario = u.id
-        WHERE u.id = :id
-        ORDER BY v.fecha DESC";
-$tot = $link->prepare($sql);
-$tot->execute(array(":id"=>$_SESSION['usuario']['id']));
-$res = $tot->fetchAll(PDO::FETCH_OBJ);
 ?>
 <div class="container my-4">
 	<h2 class="text-center mb-4">Mi cuenta</h2>
@@ -24,16 +14,9 @@ $res = $tot->fetchAll(PDO::FETCH_OBJ);
 		</div>
 	</div>
 </div>
-<div class="container mb-4">
-	<h4>Mis compras</h4>
-	<div class="row">
-		<div class="col">
-            
-        </div>
-        <div class="col"></div>
-        <div class="col"></div>
-        <div class="col"></div>
-	</div>
+<div class=" text-center container mb-4">
+  <a href="misdatos.php" class="btn btn-info m-2">Editar mis datos</a>
+	<a href="miscompras.php" class="btn btn-info m-2">Mis compras</a>
 </div>
 <?php
 foot();

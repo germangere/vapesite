@@ -4,7 +4,7 @@ head();
 nav();
 ?>
 <div class="container my-4 col-lg-8">
-  <form action="editar_micuenta.php" method="post">
+  <form action="editar_misdatos.php" method="post">
     <div class="row">
       <div class="form-group col-12 col-md-6">
         <label for="nombre">Nombre</label>
@@ -31,18 +31,19 @@ nav();
     </div>
     <div class="row">
       <div class="form-group col-12 col-md-6">
-        <label for="pass">Contraseña</label>
+        <label for="pass">Nueva contraseña</label>
         <input type="password" id="pass" class="form-control" name="pass">
         <small></small>
       </div>
       <div class="form-group col-12 col-md-6">
-        <label for="repass">Repetir contraseña</label>
+        <label for="repass">Repetir nueva contraseña</label>
         <input type="password" id="repass" class="form-control" name="repass">
         <small></small>
       </div>
     </div>
     <div class="form-group text-center my-3">
-      <input type="submit" class="btn btn-info" value="Registrarme">
+      <input type="submit" class="btn btn-info m-2" value="Guardar">
+      <a href="micuenta.php" class="btn btn-dark m-2">Volver</a>
     </div>
   </form>
 </div>

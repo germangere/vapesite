@@ -5,6 +5,7 @@ nav();
 if (isset($_SESSION['carrito'])) {
 	$carrito = $_SESSION['carrito'];
 	$or = 0;
+	echo "<h2 class='text-center my-5'>Mi carrito</h2>";
 	echo "<div class='container mt-5'>
 					<div class=''>
 						<table class='table table-hover text-center'>

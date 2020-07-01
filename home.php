@@ -3,7 +3,15 @@ include 'functions.php';
 head();
 nav();
 ?>
-<div id="carousel" class="carousel slide" data-ride="carousel">
+<div class="container-fluid">
+  <div class="row">
+    <a href="atos.php"><img src="images/atoss.jpg" width="100%" class="img-fluid"></a>
+    <a href="mods.php"><img src="images/modss.jpg" width="100%" class="img-fluid"></a>
+    <a href="accesorios.php"><img src="images/acces.jpg" width="100%" class="img-fluid"></a>
+    <a href="liquidos.php"><img src="images/liquidoss.jpg" width="100%" class="img-fluid"></a>
+  </div>
+</div>
+<!-- <div id="carousel" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="images/fotocar1.jpg" class="d-block w-100">
@@ -23,7 +31,7 @@ nav();
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>
+</div> -->
 <?php
 foot();
 ?>

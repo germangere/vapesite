@@ -4,6 +4,7 @@ head();
 nav();
 ?>
 <div class="container my-4 col-lg-8">
+  <h2 class='my-4 text-center'>Mis datos</h2>
   <form action="editar_misdatos.php" method="post">
     <div class="row">
       <div class="form-group col-12 col-md-6">
@@ -20,8 +21,8 @@ nav();
     <div class="row">
       <div class="form-group col-12 col-md-6">
         <label for="email">E-mail</label>
-        <input type="text" id="email" class="form-control" name="email" value="<?=$_SESSION['usuario']['email']?>">
-        <small></small>
+        <input type="text" id="email" class="form-control" name="email" value="<?=$_SESSION['usuario']['email']?>" disabled>
+        <small class="font-italic text-muted">El correo electrónico no puede modificarse</small>
       </div>
       <div class="form-group col-12 col-md-6">
         <label for="telefono">Teléfono</label>
@@ -33,7 +34,7 @@ nav();
       <div class="form-group col-12 col-md-6">
         <label for="pass">Nueva contraseña</label>
         <input type="password" id="pass" class="form-control" name="pass">
-        <small></small>
+        <small class="font-italic text-muted">Opcional</small>
       </div>
       <div class="form-group col-12 col-md-6">
         <label for="repass">Repetir nueva contraseña</label>

@@ -60,8 +60,8 @@ if ($_SESSION['rol']==1){
 					head();
 					nav();
 					$tit = "Error";
-				    $msj = "Fallo al actualizar el producto";
-				    $des = "editar_producto.php";
+				    $msj = "No se actualizó ningún campo del producto";
+				    $des = "editar_producto.php?id=$id";
 				    $btn = "Reintentar";
 				    jumbo($tit, $msj, $des, $btn);
 				    foot();
@@ -72,7 +72,7 @@ if ($_SESSION['rol']==1){
 				nav();
 				$tit = "Error";
 			    $msj = "Sólo imágenes permitidas";
-			    $des = "editar_producto.php";
+			    $des = "editar_producto.php?id=$id";
 			    $btn = "Reintentar";
 			    jumbo($tit, $msj, $des, $btn);
 			    foot();
@@ -83,7 +83,7 @@ if ($_SESSION['rol']==1){
 			nav();
 			$tit = "Error";
 		    $msj = "Tamaño de imagen no permitido";
-		    $des = "editar_producto.php";
+		    $des = "editar_producto.php?id=$id";
 		    $btn = "Reintentar";
 		    jumbo($tit, $msj, $des, $btn);
 		    foot();
@@ -127,8 +127,8 @@ if ($_SESSION['rol']==1){
 			head();
 			nav();
 		    $tit = "Error";
-		    $msj = "Fallo al actualizar el producto";
-		    $des = "editar_producto.php";
+		    $msj = "No se actualizó ningún campo del producto";
+		    $des = "editar_producto.php?id=$id";
 		    $btn = "Reintentar";
 		    jumbo($tit, $msj, $des, $btn);
 		}

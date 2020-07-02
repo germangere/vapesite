@@ -60,10 +60,10 @@ if (isset($_SESSION['carrito'])) {
 				<h1 class='display-4'>El carrito está vacío</h1>
 				<hr class='my-4'>
 				<a href='home.php'>
-          <button type='button' class='btn btn-dark btn-lg'>
-            Volver a inicio
-          </button>
-        </a>
+		          <button type='button' class='btn btn-dark btn-lg'>
+		            Volver a inicio
+		          </button>
+		        </a>
 			</div>
 		</div>";
 }
